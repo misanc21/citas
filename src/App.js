@@ -1,10 +1,17 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import Formulario from './components/Formulario'
 import Cita from './components/Cita'
 
 function App() {
   //Arreglo de citas
   const [citas, guardarCitas] = useState([])
+
+
+  //useeffect para realiza operaciones cuando el state cambia 
+  useEffect (()=>{
+
+  }, [citas])
+  //
 
   const crearCita = cita => {
     guardarCitas ([
@@ -30,7 +37,7 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            <h3>Administra tus citas</h3>
+            <h3>{citas.length === 0 ? 'No hay citas ': 'Administra tus citas'}</h3>
             {citas.map(cita =>(
               <Cita
                 key={cita.id}
