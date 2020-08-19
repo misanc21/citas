@@ -13,6 +13,11 @@ function App() {
     ])
   }
 
+  //funcion que elimina cita por su id
+  const eliminarCita = id =>{
+    guardarCitas(citas.filter(cita => cita.id !== id))
+  }
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -30,6 +35,7 @@ function App() {
               <Cita
                 key={cita.id}
                 cita = {cita}
+                eliminarCita = {eliminarCita}
               />)
             )}
           </div>
