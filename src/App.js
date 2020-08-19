@@ -3,13 +3,18 @@ import Formulario from './components/Formulario'
 import Cita from './components/Cita'
 
 function App() {
+
+  //citas en local storage
+  let  citasIniciales = JSON.parse(localStorage.getItem('citas'))
+  !citasIniciales? citasIniciales = [] :citasIniciales = citasIniciales
+
   //Arreglo de citas
-  const [citas, guardarCitas] = useState([])
+  const [citas, guardarCitas] = useState(citasIniciales)
 
 
   //useeffect para realiza operaciones cuando el state cambia 
   useEffect (()=>{
-
+  localStorage.setItem('citas', JSON.stringify(citas))
   }, [citas])
   //
 
